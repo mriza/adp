@@ -3,37 +3,172 @@
   "author": "M. Riza Nurtam",
   "editor": "wokwi",
   "parts": [
-    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 40, "left": 80, "attrs": {} },
+    {
+      "type": "wokwi-breadboard-half",
+      "id": "bb1",
+      "top": 63.3,
+      "left": 233.7,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 43.1,
+      "left": 119.8,
+      "attrs": {}
+    },
     {
       "type": "wokwi-pushbutton",
       "id": "btn1",
-      "top": 180,
-      "left": 260,
-      "attrs": { "color": "red" }
+      "top": 108,
+      "left": 374.6,
+      "rotate": 180,
+      "attrs": {
+        "color": "red"
+      }
     },
     {
       "type": "wokwi-led",
       "id": "led1",
-      "top": 60,
-      "left": 280,
-      "attrs": { "color": "red" }
+      "top": 8.4,
+      "left": 381,
+      "rotate": 90,
+      "attrs": {
+        "color": "red",
+        "flip": ""
+      }
     },
     {
       "type": "wokwi-resistor",
       "id": "r1",
-      "top": 120,
-      "left": 260,
-      "attrs": { "value": "220" }
+      "top": 62.4,
+      "left": 345.05,
+      "rotate": 90,
+      "attrs": {
+        "value": "220"
+      }
     }
   ],
   "connections": [
-    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
-    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
-    [ "btn1:1.l", "esp:D15", "green", [] ],
-    [ "btn1:2.r", "esp:GND.1", "black", [] ],
-    [ "esp:D18", "r1:1", "green", [] ],
-    [ "r1:2", "led1:A", "green", [] ],
-    [ "led1:C", "esp:GND.1", "black", [] ]
+    [
+      "esp:TX0",
+      "$serialMonitor:RX",
+      "",
+      []
+    ],
+    [
+      "esp:RX0",
+      "$serialMonitor:TX",
+      "",
+      []
+    ],
+    [
+      "bb1:11b.j",
+      "bb1:bn.9",
+      "black",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "bb1:1b.j",
+      "bb1:bn.1",
+      "black",
+      [
+        "h-39.7"
+      ]
+    ],
+    [
+      "esp:GND.1",
+      "bb1:bn.15",
+      "black",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:D18",
+      "bb1:8b.j",
+      "red",
+      [
+        "h28.5",
+        "v-28.8"
+      ]
+    ],
+    [
+      "esp:D15",
+      "bb1:13b.j",
+      "red",
+      [
+        "h28.5",
+        "v-38.6"
+      ]
+    ],
+    [
+      "r1:1",
+      "bb1:2b.g",
+      "",
+      [
+        "$bb"
+      ]
+    ],
+    [
+      "r1:2",
+      "bb1:8b.g",
+      "",
+      [
+        "$bb"
+      ]
+    ],
+    [
+      "led1:A",
+      "bb1:2b.f",
+      "",
+      [
+        "$bb"
+      ]
+    ],
+    [
+      "led1:C",
+      "bb1:1b.f",
+      "",
+      [
+        "$bb"
+      ]
+    ],
+    [
+      "btn1:1.l",
+      "bb1:13t.b",
+      "",
+      [
+        "$bb"
+      ]
+    ],
+    [
+      "btn1:2.l",
+      "bb1:11t.b",
+      "",
+      [
+        "$bb"
+      ]
+    ],
+    [
+      "btn1:1.r",
+      "bb1:13b.g",
+      "",
+      [
+        "$bb"
+      ]
+    ],
+    [
+      "btn1:2.r",
+      "bb1:11b.g",
+      "",
+      [
+        "$bb"
+      ]
+    ]
   ],
   "dependencies": {}
 }
