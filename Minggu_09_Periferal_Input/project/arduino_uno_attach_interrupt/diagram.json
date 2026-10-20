@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "author": "M. Riza Nurtam",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 120, "left": 80, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 20,
+      "left": 150,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 100,
+      "left": 400,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 200,
+      "left": 410,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "btn1:1.l", "uno:GND.1", "green", [ "h-20", "v60" ] ],
+    [ "btn1:2.r", "uno:2", "green", [ "h20", "v60" ] ],
+    [ "uno:8", "r1:2", "green", [ "v-30", "h180", "v180" ] ],
+    [ "r1:1", "led1:A", "green", [] ],
+    [ "led1:C", "uno:GND.2", "green", [ "v190", "h-190" ] ]
+  ],
+  "dependencies": {}
+}
