@@ -1,9 +1,29 @@
+// ============================================================================
 // Program Interrupt Pemotong Blinking LED - ESP32 (Hardware Interrupt IRAM_ATTR)
-// Rangkaian ESP32:
+// ============================================================================
+// PERSIAPAN ARDUINO IDE v2 (INSTALASI BOARD ESP32 BY ESPRESSIF SYSTEMS):
+// 1. Buka Arduino IDE v2, klik menu File -> Preferences (atau Ctrl + ,).
+// 2. Pada kolom "Additional boards manager URLs", masukkan URL resmi berikut:
+//    https://espressif.github.io/arduino-esp32/package_esp32_index.json
+//     lalu klik OK.
+// 3. Buka menu Tools -> Board -> Boards Manager... (atau klik ikon Boards
+//    Manager di sidebar kiri Arduino IDE v2).
+// 4. Ketik "esp32" pada kolom pencarian, cari paket:
+//    "esp32 by Espressif Systems", lalu klik tombol Install.
+// 5. Setelah selesai terinstal, pilih board dan port:
+//    - Klik Tools -> Board -> esp32 -> pilih "DOIT ESP32 DEVKIT V1"
+//      (atau "ESP32 Dev Module" sesuai tipe board fisik yang digunakan).
+//    - Klik Tools -> Port -> pilih port serial ESP32 (COMx di Windows atau
+//      /dev/ttyUSB0 / /dev/ttyACM0 di Linux).
+// 6. Klik tombol Upload (ikon panah kanan). Jika muncul tulisan "Connecting...",
+//    tekan dan tahan tombol fisik BOOT pada board ESP32 selama 2 detik.
+//
+// RANGKAIAN ESP32:
 // - LED Anoda -> GPIO 18 (melalui resistor 220 Ohm ke GND)
 // - Push Button -> GPIO 15 dan GND (INPUT_PULLUP)
-// Catatan: Berbeda dengan Arduino Uno, ESP32 mendukung attachInterrupt() pada semua
-// pin GPIO input (hindari GPIO 6-11 karena terhubung ke SPI Flash internal).
+// Catatan: Berbeda dengan Arduino Uno, ESP32 mendukung attachInterrupt() pada
+// semua pin GPIO input (hindari GPIO 6-11 karena dipakai SPI Flash internal).
+// ============================================================================
 
 #include <Arduino.h>
 

@@ -58,6 +58,18 @@ Hubungkan kabel USB dari ESP32 langsung ke salah satu port USB Host pada **Raspb
 
 ## 5. LANGKAH KERJA PRAKTIKUM
 
+### Persiapan Awal: Konfigurasi Board ESP32 pada Arduino IDE v2 (10 Menit)
+Sebelum memulai percobaan pada ESP32, pastikan lingkungan pemrograman **Arduino IDE v2** telah memiliki dukungan *core* resmi **ESP32 by Espressif Systems**:
+1. Buka **Arduino IDE v2**, lalu pilih menu **File $\rightarrow$ Preferences...** (`Ctrl + ,`).
+2. Pada kolom **Additional boards manager URLs**, masukkan URL resmi Espressif berikut lalu klik **OK**:
+   ```text
+   https://espressif.github.io/arduino-esp32/package_esp32_index.json
+   ```
+3. Buka **Boards Manager** melalui ikon di *sidebar* kiri (atau menu **Tools $\rightarrow$ Board $\rightarrow$ Boards Manager...**), ketik **`esp32`**, lalu pilih paket **`esp32` by Espressif Systems** dan klik **Install**.
+4. Setelah instalasi selesai, pilih board melalui menu **Tools $\rightarrow$ Board $\rightarrow$ esp32 $\rightarrow$ DOIT ESP32 DEVKIT V1** (atau **ESP32 Dev Module**), serta pilih port USB pada **Tools $\rightarrow$ Port** (`/dev/ttyUSB0` di Linux atau `COMx` di Windows).
+
+---
+
 ### Percobaan 1: Pengujian Efek Contact Bounce vs Debounced Interrupt pada ESP32 (30 Menit)
 1. Buat proyek baru di Arduino IDE / PlatformIO dan unggah kode berikut ke ESP32 untuk membuktikan fenomena *bouncing* pada saklar mekanik:
    ```cpp
