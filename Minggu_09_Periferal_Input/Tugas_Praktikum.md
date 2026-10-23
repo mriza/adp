@@ -16,15 +16,9 @@ Laboratorium Komputer & IoT Politani membutuhkan prototipe **"Smart Lab Access &
 
 1. **Pada Node ESP32 (Front-Door Input Unit):**
    - **Input 1 — Keypad Matriks 4x4 (atau Kombinasi Push Button Interrupt):** Digunakan mahasiswa untuk memasukkan **6 digit kode PIN akses** (diakhiri tombol `#` untuk *Enter* dan `*` untuk *Clear*).
-   - **Input 2 — Tombol Darurat (*Emergency Panic Button*) berbasis Hardware Interrupt (`IRAM_ATTR`):** Dilengkapi *software debouncing* $50\text{ ms}$. Jika ditekan kapan saja, ESP32 harus langsung mengirimkan paket prioritas `{"event": "PANIC_ALARM"}` ke Raspberry Pi tanpa menunggu pembacaan sensor selesai.
+   - **Input 2 — Tombol Darurat (*Emergency Panic Button*) berbasis Hardware Interrupt (`IRAM_ATTR`):** Dilengkapi *software debouncing* $50\text{ ms}$. Jika ditekan kapan saja, ESP32 harus langsung mengirimkan paket prioritas `{"event": "PANIC_ALARM"}` ke LED tanpa menunggu pembacaan sensor selesai.
+   - **LED** - Menyala jika interrupt ditekan.
    - **Input 3 — Sensor Lingkungan & Kehadiran:** Membaca minimal 1 sensor analog (misal: LDR / sensor suhu analog / potensiometer simulasi bukaan pintu) menggunakan fungsi terkalibrasi `analogReadMilliVolts()` dan 1 sensor digital (PIR / limit switch pintu).
-
-2. **Pada Node Raspberry Pi (Lab Supervisor Unit):**
-   - Menerima dan memvalidasi PIN yang dikirim dari ESP32. Jika PIN cocok dengan daftar PIN di Raspberry Pi, catat status `ACCESS_GRANTED`; jika salah 3 kali berturut-turut, catat `LOCKOUT_WARNING`.
-   - Membaca periferal **USB Keyboard** dan **USB Mouse** menggunakan pustaka `evdev`:
-     - Jika pengawas lab menekan kombinasi tombol khusus pada USB Keyboard (misalnya tombol `F12` atau `SPACE`), sistem mereset status alarm darurat (`PANIC_RESET`).
-     - Menghitung total jarak tempuh pergerakan **USB Mouse** ($\sum \sqrt{\Delta X^2 + \Delta Y^2}$ dalam satuan piksel) dan jumlah klik mouse sebagai indikator bahwa meja pengawas sedang aktif digunakan (*Operator Presence Detection*).
-   - Menampilkan ringkasan status seluruh periferal input di terminal Raspberry Pi secara rapi setiap 1 detik.
 
 ---
 
