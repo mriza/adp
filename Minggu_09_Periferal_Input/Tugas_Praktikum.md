@@ -16,7 +16,7 @@ Laboratorium Komputer & IoT Politani membutuhkan prototipe **"Smart Lab Access &
 
 1. **Pada Node ESP32 (Front-Door Input Unit):**
    - **Input 1 — Keypad Matriks 4x4 (atau Kombinasi Push Button Interrupt):** Digunakan mahasiswa untuk memasukkan **6 digit kode PIN akses** (diakhiri tombol `#` untuk *Enter* dan `*` untuk *Clear*).
-   - **Input 2 — Tombol Darurat (*Emergency Panic Button*) berbasis Hardware Interrupt (`IRAM_ATTR`):** Dilengkapi *software debouncing* $50\text{ ms}$. Jika ditekan kapan saja, ESP32 harus langsung mengirimkan paket prioritas `{"event": "PANIC_ALARM"}` ke LED tanpa menunggu pembacaan sensor selesai.
+   - **Input 2 — Tombol Darurat (*Emergency Panic Button*) berbasis Hardware Interrupt (`IRAM_ATTR`):** Dilengkapi *software debouncing* $50\text{ ms}$. Jika ditekan kapan saja, ESP32 harus langsung menyalakan LED tanpa menunggu pembacaan sensor selesai.
    - **LED** - Menyala jika interrupt ditekan.
    - **Input 3 — Sensor Lingkungan & Kehadiran:** Membaca minimal 1 sensor analog (misal: LDR / sensor suhu analog / potensiometer simulasi bukaan pintu) menggunakan fungsi terkalibrasi `analogReadMilliVolts()` dan 1 sensor digital (PIR / limit switch pintu).
 
